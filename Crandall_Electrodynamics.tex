@@ -1,0 +1,1031 @@
+\documentclass[fontsize=4pt]{scrartcl}
+\usepackage{lmodern}
+
+
+%\documentclass[10pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[margin=0.25in]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{esint}					%for cyclic integrals
+\usepackage{ amssymb } 
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{multicol}
+\usepackage{color,soul}
+\usepackage{siunitx}					% Scientific Notation
+
+
+\usepackage{graphicx}
+
+\def\rcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{BoldR}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+\title{Electrodynamics}
+\author{Joseph Crandall}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+%\begin{multicols}{1}
+
+%\maketitle
+\colorbox{YellowGreen}{Joe Crandall's PHYS 3165 Electrodynamics}
+\colorbox{Thistle}{Used Heavily}
+\colorbox{Cyan}{Topic}
+\colorbox{Orange}{SubTopic}
+\colorbox{Aquamarine}{KNOWTHISMATH}
+\colorbox{RubineRed}{Definition/Constant/Units}
+\colorbox{Yellow}{break}
+\colorbox{Aquamarine}{Vector Derivatives}
+\textbf{Cartesian}
+$d\vec{l} = dx\hat{x} + dy\hat{y} + dz\hat{z}$
+\hl{I}
+$d \tau = dxdydz$
+\hl{I}
+$Gradient:  \nabla t =\frac{\partial t}{\partial x}\hat{x} + \frac{\partial t}{\partial y}\hat{y} + \frac{\partial t}{\partial z}\hat{z} $
+\hl{I}
+$Divergence: \nabla \cdot \vec{v} = \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} + \frac{\partial v_z}{\partial z}$
+\hl{I}
+$Curl: \nabla \times \vec{v} = (\frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z}) \hat{x} + (\frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x}) \hat{y} + (\frac{\partial v_y}{\partial x}- \frac{\partial v_x}{\partial y})\hat{z}$
+\hl{I}
+$Laplacian: \nabla^2 t = \frac{\partial^2 t}{\partial x^2} + \frac{\partial^2 t}{\partial y^2} + \frac{\partial^2 t}{\partial z^2}$
+\hl{I}
+\textbf{Spherical}
+$d\vec{l} = dr \hat{r} + rd\theta \hat{\theta} + r \sin \theta d\phi \hat{\phi} $
+\hl{I}
+$d\tau = r^2 \sin \theta dr d\theta d\phi$
+\hl{I}
+$Gradient: \nabla t = \frac{\partial t}{\partial r} \hat{r} + \frac{1}{r}\frac{\partial t}{\partial \theta} \hat{\theta} +\frac{1}{ r \sin \theta} \frac{\partial t}{\partial \phi}\hat{\phi}$ 
+\hl{I}
+$Divergence: \nabla \cdot \vec{v} = \frac{1}{r^2}\frac{\partial}{\partial r} (r^2 v_r) + \frac{1}{r\sin \theta} \frac{\partial }{\partial \theta }(\sin \theta v_{\theta}) + \frac{1}{r\sin \theta }\frac{\partial v_{\phi}}{\partial \phi}$
+\hl{I}
+$Curl: \nabla \times \vec{v} = \frac{1}{r \sin \theta} [\frac{\partial}{\partial \theta} (\sin\theta v_{\phi}) - \frac{\partial v_\theta}{\partial \phi}] \hat{r} +      \frac{1}{r} [\frac{1}{\sin \theta} \frac{\partial v_r}{\partial \phi} - \frac{\partial} {\partial \phi} (r v_{\phi})] \hat{\theta} + \frac{1}{r} [\frac{\partial}{\partial r} (r v_{\theta}) - \frac{\partial v_{r}} {\partial \theta}] \hat{\phi} $
+\hl{I}
+$Laplacian: \nabla^2 t = \frac{1}{r^2}\frac{\partial}{\partial r}(r^2\frac{\partial t}{\partial r}) + \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta}(\sin \theta \frac{\partial t}{\partial \theta}) + \frac{1}{r^2 \sin^2\theta}\frac{\partial^2 t}{\partial \phi^2}$
+\hl{I}
+\textbf{Cylindrical}
+$d\vec{l} = ds \hat{s} + s d\phi \hat{\phi} + dz \hat{z}$
+\hl{I}
+$d\tau = s ds d\phi dz$
+\hl{I}
+$Gradient:  \nabla t =\frac{\partial t}{\partial s}\hat{s} + \frac{1}{s}\frac{\partial t}{\partial \phi}\hat{\phi} + \frac{\partial t}{\partial z}\hat{z} $
+\hl{I}
+$Divergence: \nabla \cdot \vec{v} = \frac{1}{s}\frac{\partial}{\partial s}(sv_s) + \frac{1}{s}\frac{\partial v_{\phi}}{\partial \phi} + \frac{\partial v_z}{\partial z}$
+\hl{I}
+$Curl: \nabla \times \vec{v} = [\frac{1}{s} \frac{\partial v_z}{\partial \phi} - \frac{\partial v_{\phi}}{\partial z}] \hat{s} + (\frac{\partial v_s}{\partial z} - \frac{\partial v_z}{\partial s}) \hat{\phi} + \frac{1}{s}(\frac{\partial}{\partial s} (sv_{\phi})- \frac{\partial v_s}{\partial \phi})\hat{z}$
+\hl{I}
+$Laplacian: \nabla^2 t = \frac{1}{s}\frac{\partial}{\partial s}(s\frac{\partial t}{\partial s}) + \frac{1}{s^2} \frac{\partial^2 t}{\partial \phi^2} + \frac{\partial^2 t}{\partial z^2}$
+\colorbox{Aquamarine}{Vector Identities}
+\textbf{Triple Products}
+$\vec{A} \cdot (\vec{B} \times \vec{C}) = \vec{B} \cdot (\vec{C} \times \vec{A}) = \vec{C} \cdot (\vec{A} \times \vec{B})$
+\hl{I}
+$\vec{A} \cdot (\vec{B} \times \vec{C}) = \vec{B} ( \vec{C} \cdot \vec{A}) - \vec{C}(\vec{A} \cdot \vec{B})  $
+\textbf{Product Rules}
+$\nabla (fg) = f(\nabla g) + g (\nabla f)$
+\hl{I}
+$\nabla (\vec{A} \cdot \vec{B}) = \vec{A} \times (\nabla \times \vec{B}) + B \times (\nabla \times \vec{A}) + (\vec{A} \cdot \nabla)\vec{B} + (\vec{B} \cdot \nabla)\vec{A}$
+\hl{I}
+$\nabla \cdot (f \vec{A}) = f(\nabla \cdot \vec{A}) + \vec{A} \cdot (\nabla f)$
+\hl{I}
+$\nabla \cdot (\vec{A} \times \vec{B}) = \vec{B} \cdot (\nabla \times \vec{A}) - \vec{A} \cdot (\nabla \times \vec{B})$
+\hl{I}
+$\nabla \times (f \vec{A}) = f(\nabla \times \vec{A}) - \vec{A} \times (\nabla f)$
+\hl{I}
+$\nabla \times (\vec{A} \times \vec{B}) = (\vec{B} \cdot \nabla)\vec{A} - (\vec{A} \cdot \nabla)\vec{B} + \vec{A}(\nabla \cdot \vec{B}) - \vec{B}(\nabla \cdot \vec{A})$
+\textbf{Second Derivaties}
+$\nabla \cdot (\nabla \times \vec{A}) = 0$
+\hl{I}
+$\nabla \times (\nabla f) = 0$
+\hl{I}
+$\nabla \times (\nabla \times \vec{A}) = \nabla(\nabla \cdot \vec{A}) - \nabla^2 \vec{A}$
+\colorbox{Aquamarine}{Fundamental Theorems}
+\textbf{Gradient Theorem:}
+$\int_{\vec{a}}^{\vec{b}} (\nabla f) \cdot d\vec{l} = f(\vec{b}) - f(\vec{a})$
+\textbf{Divergence Theorem:} 
+$\int (\nabla \cdot \vec{A}) d\tau = \oint \vec{A} \cdot d\vec{a}$
+\textbf{Curl Theorem:}
+$\int (\nabla \times \vec{A}) \cdot d\vec{a} = \oint \vec{A} \cdot d\vec{l}$
+\colorbox{Aquamarine}{Basic Equations of Electrodynamics}
+\textbf{Potentials}
+$\vec{E} = -\nabla V - \frac{\partial \vec{A}} {\partial t}$
+\colorbox{RubineRed}{permittivity of free space}
+$\epsilon_0 = \SI{8.85e-12}{\coulomb^2 / \newton \metre}$
+\hl{I}
+\colorbox{RubineRed}{permeability of free space}
+$\mu_0 = \SI{4\pi e-7}{\newton / \ampere^2}$
+\hl{I}
+\colorbox{RubineRed}{speed of light}
+$c = \SI{3.00 e-8}{\metre / \second}$
+\hl{I}
+\colorbox{RubineRed}{charge of the electron}
+$e = \SI{1.60e-19}{\coulomb}$
+\hl{I}
+\colorbox{RubineRed}{mass of the electron}
+$m = \SI{9.11e-31}{\kilogram}$ 
+\colorbox{Aquamarine}{Spherical and Cylindrical Coordinates}
+\textbf{Spherical}
+$x = r \sin \theta \cos \phi$
+\hl{I}
+$y = r\sin \theta \sin \phi$
+\hl{I}
+$z = r \cos \theta$
+\hl{I}
+$\hat{x} = \sin \theta \cos \phi \hat{r} + \cos \theta \cos \phi \hat{\theta} - \sin \phi \hat{\phi}$
+\hl{I}
+$\hat{y} = \sin \theta \sin \phi \hat{r} = \cos \theta \sin \phi \hat{\theta} + \cos \phi \hat{\phi}$
+\hl{I}
+$\hat{z} = \cos{\theta} \hat{r} - \sin \theta \hat{\theta}$
+\hl{I}
+$r = \sqrt{x^2 + y^2 + z^2}$
+\hl{I}
+$\theta = \tan^{-1}(\frac{\sqrt{x^2 + y^2}}{z})$
+\hl{I}
+$\phi = \tan^{-1}(\frac{y}{x})$
+\hl{I}
+$\hat{r} = \sin \theta \cos \phi \hat{x} + \sin \theta \sin \phi \hat{y} + \cos \theta \hat{z}$
+\hl{I}
+$\hat{\theta} = \cos \theta \cos \phi \hat{x} + \cos \theta \sin \phi \hat{y} - \sin \theta \hat{z}$
+\hl{I}
+$\hat{\phi} = - \sin \phi + \cos \phi \hat{y}$
+\textbf{Cylindrical}
+$x = s \cos \phi$
+\hl{I}
+$y = s \sin \phi$
+\hl{I}
+$z=z$
+\hl{I}
+$\hat{x} = \cos{\phi}\hat{s} - \sin \phi \hat{\phi}$
+\hl{I}
+$\hat{y} = \sin \phi \hat{s} + \cos \phi \hat{\phi}$
+\hl{I}
+$\hat{z} = \hat{z}$
+\hl{I}
+$s=\sqrt{x^2 + y^2}$
+\hl{I}
+$\phi = \tan^{-1}(y/x)$
+\hl{I}
+$z=z$
+\hl{I}
+$\hat{s} = \cos \phi \hat{x} + \sin \phi \hat {y}$
+\hl{I}
+$\hat{\phi} = -\sin \phi \hat{x} + \cos \phi \hat{y}$
+\hl{I}
+$\hat{z} = \hat{z}$
+\colorbox{Aquamarine}{Dot Product}
+$\vec{r} \cdot \vec{s} = |\vec{r}| |\vec{s}| cos\theta = r_xs_x=r_ys_y+r_zs_z$
+\colorbox{Aquamarine}{Cross Product}
+$\vec{r} \times \vec{s} = <r_ys_z-r_zs_y, r_zs_x-r_xs_z,r_xs_y-r_ys_x>$
+\colorbox{Cyan}{2. Electrostatics}
+\colorbox{RubineRed}{charge} flows from positive to negative
+\colorbox{Orange}{Coulomb's Law}
+$\vec{F} = \frac{1}{4 \pi \epsilon_0} \frac{qQ}{| \vec{r} - \vec{r\prime} |^2} (\vec{r} - \vec{r\prime})$
+\hl{I}
+$\epsilon_0 = 8.85 \times 10^{-12} \frac{C^2}{N \cdot m^2}$
+\colorbox{Orange}{Principle of Superposition}
+$\vec{F} = \vec{F_1} + \vec{F_2} + ... $
+\colorbox{Orange}{Electric Field}
+$\vec{F}=Q\vec{E}$
+\hl{I}
+$\vec{E}(r) \equiv  \frac{1}{4\pi \epsilon_0} \Sigma_{i=1}^{n} \frac{q_i}{R_i^2}\hat{R}$
+\hl{I}
+$\vec{R} = (\vec{r}-\vec{r}\prime)$ 
+\hl{I}
+\colorbox{Thistle}{$R = |(\vec{r}-\vec{r}\prime)|$}
+\hl{I}
+\colorbox{Thistle}{$\hat{R} = \frac{\vec{R}}{R}$}
+\colorbox{Orange}{Continuous Charge Distribution}
+\textbf{Electric field of a line charge:}
+$\vec{E} (\vec{r}) = \frac{1}{4\pi \epsilon_{0}} \int \frac{\lambda (\vec{r^{\prime} })} {R^2} \hat{R} dl^{\prime}$
+\textbf{Electric field of a surface charge:}
+$\vec{E} (\vec{r}) = \frac{1}{4\pi \epsilon_{0}} \int \frac{\sigma (\vec{r^{\prime} })} {R^2} \hat{R} da^{\prime}$
+\textbf{Electric field of a volume charge:}
+$\vec{E} (\vec{r}) = \frac{1}{4\pi \epsilon_{0}} \int \frac{\rho (\vec{r^{\prime} })} {R^2} \hat{R} d\tau^{\prime}$
+\colorbox{Orange}{Divergence and Curl of Electrostatic Fields}
+\textbf{Gauss's Law:}
+$\oint \vec{E} \cdot d\vec{a} = \frac{1}{\epsilon_0}Q_{enclosed}$
+\hl{I}
+$\nabla \cdot \vec{E} = \frac{1}{\epsilon_0} \rho$
+\textbf{Integral around a closed path:}
+$\oint \vec{E} \cdot d\vec{l} = 0$
+\hl{I}
+$\nabla \times \vec{E} = \vec{0}$
+\colorbox{Orange}{Electric Potential}
+$V(\vec{r}) \equiv - \int_{O}^{\vec{r}} \vec{E} \cdot d\vec{l}$
+\hl{I}
+O is standard reference point on which we have agreed beforehand
+\hl{I}
+$\vec{E} = - \nabla V$
+\hl{I}
+$\nabla^2 V = -\frac{\rho}{\epsilon_0}$
+\textbf{Electric potential of a volume charge:}
+$\vec{E} (\vec{r}) = \frac{1}{4\pi \epsilon_{0}} \int \frac{\rho (\vec{r^{\prime} })} {R} d\tau^{\prime}$
+\hl{I}
+$\oint \vec{E} \cdot d\vec{a} = \frac{1}{\epsilon_0} Q_{enclosed} = \frac{1}{\epsilon_0} \sigma A$
+\colorbox{Orange}{Work and Energy}
+$W=\int_{\vec{a}}^{\vec{b}} \vec{F} \cdot d\vec{l} = - Q \int_{\vec{a}}^{\vec{b}} \vec{E} \cdot d\vec{l} = Q[V(\vec{b}) - V( \vec{a}) ]$
+\textbf{volume charge density:}
+$W = \frac{1}{2} \int \rho V d\tau$
+\colorbox{Orange}{electric potential, electric field, charge density triangle}
+$\textbf{Electric Field} (\SI{}{\newton / \coulomb}) \leftrightarrow \textbf{Electric potential(Voltage)} (\SI{}{\volt}), (\SI{}{\joule / \coulomb})  $ 
+$-\int_{0}^{\vec{r}} \vec{E} \cdot d\vec{r} = V(\vec{r})$
+\hl{I}
+$\vec{E} = -\nabla V$
+$\textbf{Electric Field} (\SI{}{\newton / \coulomb}) \leftrightarrow \textbf{charge density} (\SI{}{\coulomb / \meter^3})$
+$\vec{E} = \frac{1}{4\pi \epsilon_0}\int \frac{\hat{R}}{R^2}\rho d\tau$
+\hl{I}
+$\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}$
+\hl{I}
+$\nabla \times \vec{E} = \vec{0}$
+$ \textbf{Electric potential(Voltage)} (\SI{}{\volt}), (\SI{}{\joule / \coulomb}) \leftrightarrow \textbf{charge density} (\SI{}{\coulomb / \meter^3})$
+$V = \frac{1}{4\pi \epsilon_0}\int \frac{\rho}{R}d\tau$
+\hl{I}
+$\nabla^2 V = \frac{-\rho}{\epsilon_0}$
+\colorbox{Cyan}{Dr. Whites Grid Review}
+\textbf{Name of source:} charge q
+\hl{l}
+Gravitational analogies mass m
+\hl{I}
+units coulomb C or ampere in one second As
+\hl{l}
+typical values $\SI{1.60 e-19}{\coulomb}$ (charge of an electron) $\SI{1.0 e-9}{\coulomb}$ (ping pong ball charge) $\SI{1.0 e-6}{\coulomb}$ (van der graaf static charge) 
+\hl{I}
+general equation for getting $\vec{E}$ from this quantity, point charge at origin $\vec{E}(\vec{r}) = \frac{1}{4\pi \epsilon_0}\frac{q}{|\vec{r}|^2} \hat{r}$
+\hl{I}
+general equation for getting this from $\vec{E}$, Gauss's law $\oint \vec{E} \cdot d\vec{a} = \frac{Q_{enclosed}}{\epsilon_0}$
+\textbf{Force Constant (Coulombs Constant):} $k = \frac{1}{4\pi \epsilon_0} = \SI{8.987e9}{\newton \metre^2  \coulomb^{-2}}$
+\hl{I}
+gravitational analogies, $G = \SI{6.674e-11}{\newton \metre^2  \kilogram^{-2}}$
+\hl{I}
+Units, Newton metre squared per coulomb squared $Nm^2/C^2$ or meter per farad m/F, $\SI{}{\farad} = \SI{}{\second^4\ampere^2\meter^{-2}\kilogram^{-1}}$
+\hl{I}
+\textbf{Force on q by Q (Coulombs law):} $F = \frac{k q Q}{R^2} \hat{R}$ (electric field $x \rightarrow -$)
+\hl{I}
+Gravitational analogies $F = G \frac{m_1 m_2}{r^2}$ force due to gravity
+\hl{I}
+units, Newton $\SI{}{\newton}$ or kilogram meter per second squared $\SI{}{\kilogram \meter \second^-2}$. typical values $F =\frac{k(\SI{1.0e-9})^2 }{(0.1)^2} = \SI{8.987e-7}{\newton}$(ping pong ball). general equation for getting $\vec{E}$ from this quantity, $\vec{E} = \frac{\vec{F}}{Q}$. general equation for getting this from $\vec{E}$, $\vec{F} = Q\vec{E}$. long distance behavior of monopoles, $\frac{1}{r^2}$. long distance behavior of dipoles, $F=\frac{k2z}{(z^2 + (d/2)^2)^{3/2}}\hat{z} = \frac{1}{z^3}$. long distance behaviors of infinite lines $\frac{1}{r}$. long distance behaviors of infinite planes $F = \frac{qQ}{3\epsilon_0}$
+\textbf{Electric field by Q:}
+$\vec{E} = \frac{kq}{R^2}\hat{R}(+ \rightarrow -)$
+\hl{I} 
+$g = \frac{Gm}{r^2}$ (gravitational field)
+\hl{I}
+Newton per coulomb $\SI{}{\newton /  \coulomb}$ or Volts per meter $\SI{}{\volt /  \meter}$ or kilogram meter per seconds cubed ampere $\SI{}{\kilogram \meter / \second^3 \ampere}$
+\hl{I}
+$E = \frac{k(\SI{1.0e-9})}{0.1^2} = 898.7 \SI{}{\newton /  \coulomb}$
+\hl{I}
+monopoles $E=\frac{kQ}{r^2}$
+\hl{I}
+dipole $E=\frac{kq2z}{ [z^2 + (d/2)^2]^{3/2} } \hat{z}$
+\hl{I}
+lines $E= \frac{\lambda}{2\pi r \epsilon_0}$
+\hl{I}
+planes $E = \frac{\sigma}{3 \epsilon}$
+\textbf{Voltage (electric potential) Q:}
+$V = \frac{1}{4\pi \epsilon_0} \int \frac{\rho}{R} d\tau$ (potential energy per unit charge)
+\hl{I}
+$\Phi = gh$ (gravitational potential)
+\hl{I}
+Volts $\SI{}{\volt}$  or joule per coulomb $\SI{}{\joule / \coulomb}$, $\SI{}{\joule} = \SI{}{\newton \meter}$, $\SI{}{\coulomb} = $\SI{}{\ampere \second}$ $    
+\hl{I}
+1.5 Alkaline battery, 12v typical car battery
+\hl{I}
+$\vec{E} = -\nabla V$
+\hl{I}
+$V(\vec{r}) = \int_{0}^{\vec{r}} \vec{E} \cdot d\vec{l}$
+\hl{I}
+\textbf{Potential energy of Q and q when separated by r:}
+$W = QV(\vec{r})$,
+$Q = \frac{W}{V(\vec{b})-V(\vec{a})}$
+\hl{I}
+U = mgh, gravitational potential energy
+\hl{I}
+$U_E \text{ in joules }\SI{}{\joule}\text{ , }U_E \text{ in Coulomb volt squared } \SI{}{\coulomb \volt^2}$
+\hl{I}
+$\vec{E} = \frac{-\nabla V}{q}$
+\hl{I}
+$V_r = \int_{ref}^{r} q\vec{E}\cdot d\vec{s}$ 
+\colorbox{Cyan}{Dr. Whites 4 way intersection}
+Gauss Law $\oint \vec{E} \cdot d\vec{a} = \frac{1}{\epsilon_0}Q_{enclosed}$(should be double integral, cant do in latex right now)
+\hl{I}
+integral around a closed path is evidently zero $\oint \vec{E} \cdot d\vec{l} = 0 $
+\hl{I}
+applying stokes theorem $\nabla \times \vec{E} =0$
+\hl{I}
+\textbf{Electric Force ($\SI{}{\newton}$) }
+Coulombs law $\vec{F} = \frac{1}{4\pi \epsilon_0} \frac{qQ}{R^2} \hat{R}$
+\hl{I}
+$\textbf{Electric Force} (\SI{}{\newton}) \leftrightarrow \textbf{Electric Field} (\SI{}{\newton / \coulomb}) $ 
+$\vec{F} = Q\vec{E}$
+\hl{I}
+$\textbf{Electric Field} (\SI{}{\newton / \coulomb}) $ 
+$\vec{E}(\vec{r})=\frac{1}{4\pi \epsilon_0}\int \frac{\rho (r^{\prime})}{R^2}\hat{R}d\tau$
+\hl{I}
+$\textbf{Electric Field} (\SI{}{\newton / \coulomb}) \leftrightarrow \textbf{Electric potential(Voltage)} (\SI{}{\volt}), (\SI{}{\joule / \coulomb})  $ 
+$-\int_{0}^{\vec{r}} \vec{E} \cdot d\vec{r} = V(\vec{r})$
+\hl{I}
+$\vec{E} = -\nabla V$
+$\textbf{Electric potential(Voltage)} (\SI{}{\volt}), (\SI{}{\joule / \coulomb})  $ 
+$\vec{E}(\vec{r})=\frac{1}{4\pi \epsilon_0}\int \frac{\rho (r^{\prime})}{R}\hat{R}d\tau$
+\hl{I}
+$\nabla^2 V = \frac{-\rho}{\epsilon_0}$
+$\textbf{Electric potential(Voltage)} (\SI{}{\volt}), (\SI{}{\joule / \coulomb})  \leftrightarrow \textbf{potential energy (work done)} (\SI{}{\joule}), (\SI{}{\newton \meter}), (\SI{}{\watt \second}), (\SI{}{\coulomb \volt}) $ 
+\hl{I}
+$W = \frac{1}{2}\int \rho V d\tau$
+\hl{I}
+W = work in joules 
+$\textbf{potential energy (work done)} (\SI{}{\joule}), (\SI{}{\newton \meter}), (\SI{}{\watt \second}), (\SI{}{\coulomb \volt}) $ 
+$U = \frac{kqQ}{r}$ ????
+$V(b) - V(a) = \frac{W}{Q}$
+\hl{I}
+$W = \frac{\epsilon_0}{2}\int_V E^2 d\tau = \oint_s V\vec{E} \cdot d\vec{a}$ 
+\colorbox{YellowGreen}{Midterm II}
+\colorbox{Cyan}{5. Magnetostatics}
+\colorbox{Orange}{5.1 The Lorentz Force Law}
+$\vec{F_{mag}} = Q(\vec{v}\times \vec{B})$
+\hl{I}
+$\vec{F} = Q(\vec{E} + (\vec{v}\times \vec{B}))$
+\hl{I}
+$\textbf{cyclotron motion}$
+$QvB = m\frac{v^2}{R}$ or $p = QBR$ where $p=mv$
+\hl{I}
+$\textbf{magnetic forces do no work}$
+$dW_{mag} = \vec{F_{mag}} \cdot d\vec{l} = Q(\vec{v} \times \vec{B}) \cdot \vec{v}dt  0$
+\hl{I}
+\textbf{current}
+$\vec{F_{mag}} = \int I (d\vec{I} \times \vec{B})$
+\hl{I}
+\textbf{surface current density $\vec{K}$} 
+\hl{l}
+$\vec{K} = \frac{d\vec{l}}{dl \bot}$
+\hl{I}
+\textbf{surface current densitt $\sigma$} $\vec{K} = \sigma \vec{v}$
+\hl{I}
+$\vec{F_{mag}} = \int (\vec{v} \times \vec{B})\sigma da = \int (\vec{K} \times \vec{B}) da$
+\hl{I}
+\textbf{volume current density $\vec{J}$}
+\hl{I}
+$\vec{J} = \frac{d\vec{I}}{da_{\bot}}$
+\hl{I}
+\textbf{charge density density $\rho$}
+\hl{I}
+$\vec{J} = \rho \vec{v}$
+\hl{I}
+$\vec{F}_{mag} = \int (\vec{v} \times \vec{B})\rho d\tau = \int (\vec{J} \times \vec{B})d\tau$
+\hl{I}
+$\nabla \cdot \vec{J} = -\frac{\partial \rho}{\partial t}$
+\hl{I}
+\textbf{Cyclotron motion} $QvB = m\frac{v^2}{R}$ or $p = mv = QBR$
+\hl{I}
+$\nabla \cdot = \frac{\partial \rho}{\partial t}$ 
+\colorbox{Orange}{5.2 The Biot-Savart Law}
+\text{Stationary charges -> constant electric fields; electrostatics}
+\hl{I}
+\text{Steady currents -> constant magnetic fields: magnetostatics}
+\hl{I}
+\text{electro/magnetostatics is the regime}
+$\frac{\partial \rho}{\partial t}=0$ and $\frac{\partial \vec{J}}{\partial t} = \vec{0}$
+\hl{I}
+$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int \frac{\vec{I} \times \hat{r}}{r^2} dl^{\prime} = \frac{\mu_0}{4\pi} \int \frac{dl^{\prime} \times \hat{r}}{r^2}$
+\colorbox{RubineRed}{permeability of free space}
+$\mu_0 = \SI{4\pi e-7}{\newton \ampere^{-2}}$
+\hl{I}
+$\textbf{surface current}$
+$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int \frac{\vec{K}(\vec{r}^{\prime}) \times \hat{r}}{r^2} da^{\prime} $
+\hl{I}
+$\textbf{volume current}$
+$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int \frac{\vec{J}(\vec{r}^{\prime}) \times \hat{r}}{r^2} d\tau^{\prime} $
+\colorbox{Orange}{5.3 The divergence and Curl of B}
+\text{the integral of $\vec{B}$ around a circular path of radius s, centered at the wire is}
+$ \oint \vec{B} \cdot d\vec{l} = \oint \frac{\mu_0 I}{2\pi s} dl = \frac{\mu_0 I}{2\pi s} \oint dl = \mu_0 I$
+\hl{I}
+$\oint \vec{B} \cdot d\vec{I} = \mu_0 I_{enc}$
+\hl{I}
+$I_{enc} = \int \vec{J} \cdot d\vec{a}$
+\hl{I}
+$\int (\nabla \times \vec{B}) \cdot d\vec{a} = \mu_0 \int \vec{J} \cdot d\vec{a}$
+\hl{I}
+$\nabla \times \vec{B} = \mu_0 \vec{J}$ 
+\hl{I}
+$\nabla \cdot \vec{B} = 0$
+\hl{I}
+\text{Ampere's Law}
+\hl{I}
+$\nabla \times \vec{B} = \mu_0 \vec{J}$
+\hl{I}
+$\oint \vec{B} \cdot d\vec{l} = \mu_0 I_{enc}$
+\hl{I}
+Electrostatics: Coulomb $\rightarrow$ Gauss, 
+Magnetostatics: Biot-Savart $\rightarrow$ Ampered
+\text{Solenoid}
+$\oint \vec{B} \cdot d\vec{I} = B_{\phi} (2\pi s) = \mu_{0} I_{enclosed}$
+\text{for a loop that is half inside and half outside of the solenoid}
+$\oint \vec{B} \cdot d\vec{l} = BL = \mu_{naught} I_{enc} = \mu{0} I L$
+\hl{I}
+$\vec{B} = \mu_0 n I \hat{Z} \text{ inside the solenoid} = 0 \text{ outside the solenoid }$
+\hl{I}
+$\text{B field for Toroid} \vec{B}(\vec{r}) = \frac{mu_{0}NI}{2 \pi s} \hat{\phi} \text{for points inside the toroid} = 0 \text{for points outside the coil }$
+\hl{I}
+\textbf{Maxwell's equations for electrostatics} 
+$\nabla \cdot \vec{E} = \frac{1}{\epsilon_0}\rho \text{(Gauss's law)}$
+$\nabla \times \vec{E} = \vec{0} \text{(no name)}$
+\hl{I}
+\textbf{Maxwell's equations for magnetostatics}
+$\nabla \cdot \vec{B} = 0  \text{(no name)}$
+$\nabla \times \vec{B} = \mu_{0} \vec{J} \text{(Ampere's law)}$ 
+\textbf{Maxwell's equations and the force law}
+$\vec{F} = Q(\vec{E} + \vec{v} \times \vec{B})$
+\colorbox{Orange}{5.4 Magnetic Vector Potential}
+just as $\nabla \times \vec{E} = \vec{0}$ permits the introduction of a scalar potential V in electrostatics $\vec{E} = \nabla V$ so $\nabla \cdot \vec{B} = 0$ invites the introduction of a vector  potential A in magnetostatics $\vec{B} = \nabla \times \vec{A}$
+\hl{I}
+$\nabla \cdot \vec{A} = 0$
+\hl{I}
+$\nabla^2 \vec{A} = -\mu_0 \vec{J}$
+\hl{I}
+$\vec{A}(\vec{r}) = \frac{\mu_0}{4\pi}\int \frac{\vec{J}(\vec{r}^{\prime})}{R}d\tau^{\prime}$
+\hl{I}
+$\text{Vector potential for line current} \vec{A}= \frac{\mu_0}{4\pi} \int \frac{\vec{I}}{R} dl^{\prime} = \frac{\mu_0 I}{4\pi} \int \frac{1}{R}d\vec{l}^{\prime}$
+$\text{Vector potential for surface current} 
+\vec{A}= \frac{\mu_0}{4\pi} \int \frac{\vec{K}(\vec{r}^{\prime})}{R}da^{\prime} $
+\hl{I}
+$\text{Magnetic Vector Potential, current density, and Magnetic field triangle relationships} $
+$\vec{A} = \frac{\mu_0}{4\pi} \int \frac{\vec{J}}{R}d\tau$
+\hl{I}
+$\nabla^2 \vec{A} = -\mu_0 \vec{J}$
+\hl{I}
+$\vec{B} = \frac{\mu_{0}}{4\pi} \int \frac{\vec{J} \times \hat{R}}{R^2} d\tau$
+\hl{I}
+$\nabla \times \vec{B} = \mu_0 \vec{J}$ ; $\nabla \cdot \vec{B} = 0$
+\hl{I}
+$\vec{B} = \nabla \times \vec{A}$ ; $\nabla \cdot \vec{A} = 0$
+\hl{I}
+$\vec{A}_{dip}(\vec{r}) = \frac{\mu_0}{4\pi}\frac{\vec{m} \times \hat{R}}{r^2}$
+were $\vec{m}$ is the magnetic dipole moment
+\hl{I}
+$\vec{m} = I \int d \vec{a} = I \vec{a}$
+where $\vec{a}$ is the vector area of the loop 
+\hl{I}
+$\vec{B}_{dip}(\vec{r}) = \frac{\mu_0}{4\pi}\frac{1}{r^3}[3(\vec{m} \cdot \hat{R})\hat{R} - \vec{m}]$
+\colorbox{Cyan}{6. Magnetic Fields in Matter}
+\colorbox{Orange}{6.1 Magnetization}
+Torque $\vec{N} = \vec{m} \times \vec{B}$ where $m = Iab$ (square) is the magnetic dipole moment of the loop
+\hl{I}
+In particular, the torque is again in such direction as to line the dipole up parallel to the field. It is this torque that accounts for paramagnetism. Since every electron constitutes a magnetic dipole you might expect paramagnetism to be a universal phenomenon. Actually, quantum mechanics tends to lock the electrons within a given atom together in pairs with opposite spin. 
+\hl{I}
+For an infinitesimal loop $\vec{F} = \nabla (\vec{m} \cdot \vec{B})$
+\hl{I}
+In the presence of a magnetic field, each atom picks up a little "extra dipole moment, and these increments are all antiparallel to the field. This is the mechanism for diamagnetism. 
+\hl{I}
+$\vec{M}$ is call the magnetization, it plays a role analogous to the polarization $\vec{P}$ in electrostatics 
+\colorbox{Orange}{6.2 The field of a Magnetized Object}
+$\vec{J}_ b = \nabla \times \vec{M}$
+\hl{I}
+$\vec{K}_b = \vec{M} \times \hat{n}$
+\colorbox{Orange}{6.3 The Auxiliary Field H}
+not covered
+\colorbox{Orange}{6.4 Linear and Non-Linear Media}
+\textbf{Ferromagnetism}
+In a linear medium, the alignment of atomic dipoles is maintained by a magnetic field imposed from the outside. Ferromagnets - which are emphatically not linear - require no external fields to sustain the magnetization; the alignment is frozen in. In Ferromagnets, each dipole likes to point in the same direction as its neighbors. The reason is quantum mechanical. Alignment occurs in relatively small patches called domains. The net effect of the magnetic field is to move the domain boundaries. If the B field is strong enough one domain takes over entirely, and the iron is said to be saturated. Shifting domain boundaries is not entirely reversible. The path is traced out in the hysteresis loop.  
+\colorbox{Cyan}{Chapter 7}
+\colorbox{Orange}{7.1 Ohm's Law}
+$\vec{J}$ the current density is proportional to the force per unit charge $\vec{f}$
+\hl{I}
+$\vec{J} = \sigma \vec{f}$ where $\sigma$ is the proportionality factor called the conductivity of the material
+\hl{I}
+$\rho = \frac{1}{\sigma}$ where $\rho$ is the resistivity of the material
+\hl{I}
+$\vec{J} = \sigma (\vec{E} + \vec{v} \times \vec{B})$
+\hl{I}
+$\vec{J} = \sigma \vec{E}$
+\hl{I}
+$V=IR$
+\hl{I}
+$P = VI = I^2R$
+\hl{I}
+$\varepsilon$ is the electromotive force or emf, the integral of a force per unit charge
+\hl{I}
+$\varepsilon = \oint \vec{f} \cdot d\vec{l} = \oint \vec{s}_s \cdot d\vec{l}$
+\hl{I}
+there are two forces involved in driving current around a circuit: the source, $\vec{f}_s$ with is ordinarily confined to one portion of the loop (a battery) and an electrostaic force, which serves to motth out the flow and communicate the influence of the source to distance parts of the circuit
+\hl{I}
+$\vec{f} = \vec{f}_s + \vec{E}$
+\hl{I}
+The flux rule for motional emf $\varepsilon = \frac{-d\Phi}{dt}$
+\hl{I}
+whenever the magnetic flux through a loop changes, an emf will appear in the loop
+\colorbox{Orange}{7.2 Electromagnetic Induction}
+a changing magnetic field induces an electric field
+\hl{I}
+$\varepsilon = \oint \vec{E} \cdot d\vec{l} = -\frac{d\Phi}{dt} = -\int \frac{\partial \vec{B}}{\partial t} \cdot \partial \vec{a}$
+\hl{I}
+we can convert Faradays law from integral form into differential from by applying Stokes theorem
+\hl{I}
+$\nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}$
+\hl{I}
+The work does on a unit charge against the back emf, in one trip around the circuit is -$\varepsilon$
+\hl{I}
+$\frac{dW}{dt} = - \varepsilon I = LI \frac{dI}{dt}$
+\hl{I}
+If we start with zero current abd build it up to a final value I, the work done $W = \frac{1}{2}LI^2$
+\hl{I}
+$W = \frac{1}{2\mu_0} \int_{all space} B^2 d\tau$
+\colorbox{Orange}{7.3 Maxwells Equations}
+$\nabla \times \vec{B} = \mu_0 \vec{J} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}$
+\hl{I}
+a changing electric field induces a magnetic field
+\hl{I}
+Electric Field E  in $\SI{}{\newton \coulomb^{-1}}$ or $\SI{}{\volt \meter^{-1}}$ or $\SI{}{\kilogram \meter \second^{-3}\ampere^{-1}}$ 
+$\SI{1.0}{\newton \coulomb^{-1}}$ is small, like the field produced by a $\SI{1.0}{\volt}$ battery between its ports if were separated by a meter, $\SI{3 e6}{\newton \coulomb^{-1}}$ makes sparks in the air, $\vec{F} = q\vec{E}$, and volume charge $\vec{E}(\vec{r}) = \frac{1}{4\pi\epsilon_0}\int \frac{\rho (r^{\prime})}{R^2} \hat{R} d\tau^{\prime}$
+\hl{I}
+\colorbox{RubineRed}{magnetic dipole moment} $\vec{m}$ in $\SI{}{\newton \meter \tesla^{-1}}$ or $\SI{}{\ampere \meter^2}$ or $\SI{}{\joule \tesla^{-1}}$  1 amp (2.1 amp in high power led) (9 amp in toster) 1 meter circumference so r=.5 so $m=.5^2 \pi (1) = .25 \pi$ , $\vec{m} = I \int d\vec{a} = I\vec{a}$ , $\vec{a}$ is the area vector of the loop, if the loop is flat, $\vec{a}$ is the ordinary area enclosed
+\colorbox{RubineRed}{magnetic force constant} $K_a = \frac{\mu_0}{4\pi} =\SI{1e-7}{\newton \ampere^{-2}}$ or $\SI{}{\kilogram \meter \second^{-2} \ampere^{-2}}$ 
+\hl{I} 
+\colorbox{RubineRed}{Current} I in $\SI{}{ \ampere}$, 5 amp on one typical 12 volt motor vehicle headlight, used in ampere's law $\nabla \times \vec{B} =\mu_0 \vec{J}$ or $\oint \vec{B} \cdot d\vec{l} = \mu_0 I_{enclosed}$ where $\vec{J}$ is volume current density
+\hl{I}
+\colorbox{RubineRed}{Magnetic Flux} $\Phi_{B}$ in $\SI{}{ \volt \second}$ or $\SI{}{ \kilogram m^2 \second^{-3}\ampere^{-1}}$ if the magnetic field is perpendicular to the area and B field is 1 Tesla and the area had a radius 1. The magnetic flux is $\pi$. Magnetic flux through a closed surface $\Phi_{B} =\oiint_s \vec{B} \cdot d\vec{a} = 0$ sometimes faradays law is useful $\Phi_B = \cos \theta AB$ where theta is the angle off of perpendicular to the surface, A is the area and B is the magnetic field
+\hl{I}
+\colorbox{RubineRed}{Resistance} in ohms $\SI{}{ \ohm}$ or $\SI{}{ \kilogram \meter^2 \second^{-3} \ampere^{-2}}$ or $\SI{}{ \volt \ampere^{-1}}$ 1.5 volt alkaline battery and 2.7 high power led current you get 1.5/2.7 = 0.55 ohms. $V=IR$ and $P=VI=\frac{V^2}{R}=I^{2}R$
+\hl{I}
+\colorbox{RubineRed}{Power} in watts $\SI{}{ \watt}$ or $\SI{}{\kilogram \meter^2 \second^{-3}}$ or $\SI{}{ \joule \second^{-1}}$
+\hl{I} 
+\colorbox{RubineRed}{Volume current density} $\vec{J}$ in $\frac{A}{m^2}$ , used in $\nabla \times \vec{B} = \mu_0 \vec{J}$, $\int (\nabla \times \vec{B}) \cdot d\vec{a} = \oint \vec{B} \cdot d\vec{I} = \mu_0 \int \vec{J} \cdot d\vec{a}$, $\nabla^2 \vec{A} = -\mu_{0} \vec{J}$ 2.7 amps in high power led is passing through a area of 1meter by 1 meter you get $\vec{J} = \SI{2.7}{ \ampere \meter^{-2}}$
+\hl{I}
+\colorbox{RubineRed}{Torque} $\vec{N}$ in $\SI{}{ \joule}$ or $\SI{}{ \newton \meter}$ or $\SI{}{ \kilogram \meter^2 \second^{-2}}$ , $ \vec{N} = \vec{p} \times \vec{E}$ where dipole $\vec{p} = q\vec{d}$ in a uniform field $\vec{E}$
+\hl{I}
+\colorbox{RubineRed}{Magnetic Field} in units of Tesla $\SI{}{ \tesla}$ flows from North to South, typical refrigerator magnet $\SI{5e-3}{ \tesla}$ earths magnetic field flows from the geographic south pole to the geographic north pole, magnetic fields in the same direction = attraction, magnetic fields in opposite directions = repulsion
+\hl{I}
+\colorbox{RubineRed}{magnetic vector potential} $\vec{A}$ in $\SI{}{ \volt \second \meter^{-1}}$ or $\SI{}{ \kilogram \meter \second^{-2} \ampere^{-1}}$ or  $\SI{}{ \newton \ampere^{-1}}$ , $\vec{B} = \nabla \times \vec{A}$, $\vec{A} = \frac{\mu_0}{4\pi} \int \frac{\vec{J}}{R} d\tau$
+\hl{I}
+\colorbox{RubineRed}{Farad} unit of electrical capacitance in  $\SI{}{ \second^4 \ampere^2 \meter^{-2} \kilogram^{-1}}$
+\colorbox{Cyan}{Midterm II test corrections}
+\colorbox{Thistle}{Biot-Savart Law} $\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} \int \frac{\vec{I} \times \hat{R}}{R^2} dl^{\prime} = \frac{\mu_0}{4\pi}I \int \frac{d\l^{\prime} \times \hat{R}}{R^2}$
+\hl{I}
+\colorbox{Thistle}{Amperian Loop} $\nabla \times \vec{B} = \mu_0 \vec{J}$ use stokes theorem to convert from differential form to integral form $\int (\nabla \times \vec{B}) \cdot d\vec{a} = \oint \vec{B} \cdot d\vec{l} = \mu_0 \int \vec{J} \cdot d\vec{a}$, therefor the current enclosed by the amperian loop $\oint \vec{B} \cdot d\vec{l} = \mu_0 I_{enclosed}$
+\hl{I}
+\colorbox{Thistle}{Lorentz force law} $\vec{F}_{mag} = Q[\vec{E} + (\vec{v} \times \vec{B})]$
+\hl{I}
+\colorbox{Thistle}{Electric field for large values of r} point charge $\frac{1}{r^2}$, line charge $\frac{1}{r}$, dipole $\frac{1}{r^3}$, plane of charge constant 
+\hl{l}
+\colorbox{Thistle}{integration trig substitiution}
+$\int (x^2 + z^2)^{-3/2}$
+\hl{I}
+$x=z\tan(u)$
+\hl{I}
+$dx = z\sec^2(u) du$
+\hl{I}
+plug into $(x^2 + z^2)^{-3/2}$
+\hl{I}
+$z^2 \tan^2(u) + z^2$
+\hl{I}
+$z^2(\tan^2(u) + 1)^{-3/2}$
+\hl{I}
+\colorbox{Thistle}{magnetic field of a dipole}
+$\vec{B}_{dipole}(\vec{r}) = \frac{\mu_0}{4\pi}\frac{1}{r^3}[3(\vec{m} \cdot \hat{r})\hat{r} - \vec{m}]$
+\colorbox{Thistle}{Volt} V unit of voltage in $\SI{}{ \kilogram \meter^2 \ampere^{-1} \second ^{-3}}$
+\colorbox{Orange}{Q3 Two very long wires}
+two wires with current running in opposite directions, repulsive
+\hl{I}
+B field $\frac{1}{s} for a wire$
+\hl{I}
+field approximately $\frac{2 K_m I}{s}$ where $K_m = \SI{1e-7}{\newton \ampere^{2}}$
+\hl{I}
+\colorbox{Orange}{Q4 Two very long wires different current}
+if current changed to 10 amp out of page, magnetic field at A now zero
+\hl{I}
+the torque is in the direction perpendicular to the one of motion
+\colorbox{Orange}{Q5 Long cylinder perpendicular across the equator}
+m mass. b radius, q charge, distance D $\vec{V}_0 = v_0(-\hat{z})$ 
+\hl{I}
+$F_{total} = F_g + F_{electrostatics and magnetostatics}$
+\hl{I}
+$\vec{F} = Q(\vec{E} + \vec{v} \times \vec{B})$
+\hl{I}
+$\vec{B} = B\hat{z}$
+\hl{I}
+$\vec{J} = J(-\hat{z})$
+\hl{I}
+current density varies linearly $J(r) = J_0(1-\frac{s}{R})+J_R(\frac{s}{R})$ 
+\hl{I}
+$\langle s,\phi,z \rangle$
+\hl{I}
+earths magnetic field is parallel to the velocity vector of the particle, has no effect on velocity
+\hl{I}
+$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} \int \frac{\vec{J} \times \hat{R}}{R^2} d\tau^{\prime} $ DO NOT USE
+\hl{I}
+$\int_0^{2\pi} \vec{B} d\vec{l} = \mu_0 \int \vec{J} \cdot d\vec{a}$
+\hl{I}
+$\vec{V} = -v\hat{z}$ , $\vec{B}=-B\hat{\phi}$, $\vec{F}_b=-F\hat{s}$, $\vec{F}_g = -F\hat{s}$
+\hl{I}
+$F_t = F_g + QVB$
+\hl{I}
+$d\vec{l} = sd\theta$
+\hl{I}
+$2\pi S B = \mu_0 \int_{0}^{2\pi} \int_0^{s} J(r) = J_0(1-\frac{s}{R})+J_R(\frac{s}{R}) ds s d\theta$ 
+\hl{l}
+$F=ma$
+\hl{I}
+\colorbox{Orange}{Q6 constant and proportional surface current densities}
+at origin B field $\hat{z}$
+\hl{I}
+B field very far on xy plane $-\hat{z}$
+\hl{I}
+very far on Z axis $\hat{z}$
+\hl{I}
+spiraling steady current is dipole magnetic field in magnetostatics $\frac{1}{r^3}$ 
+\hl{I}
+side note $\vec{J} = \rho \vec{v}$ volume current density equals volume charge density times velocity, also true for $\vec{K} = \sigma \vec{v}$ sigma in this case is charge density NOT  conductivity, and $\vec{I} = \lambda \vec{v}$
+\hl{I}
+the phonograph record is best described by the current density proportional to radius
+\hl{I}
+the u tape is not described well by wither the constant magnitude current density of proportional to radius. Modeled well as the limit as constant and proportional approach each other, also has a depth element
+\hl{I}
+the single wire wrapped in eye of a stove is modeled by a current density with constant magnitude, current in a wire is same velocity where ever you are
+\hl{I}
+$\langle \hat{s}, \hat{\phi}, \hat{z} \rangle$
+\hl{I}
+$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} \int \frac{\vec{K}(\vec{r}) \times \hat{R}}{R^2} dl^{\prime}$
+\hl{I}
+$r=0$, $r^{\prime} = s s^{\prime}$, $\vec{R} = -s^{\prime} \hat{s}$, $R = s^{\prime}$, $\hat{R} = \frac{\vec{\vec{R}}}{R} = -\hat{s}$, $da^{\prime} = ds s d\phi$, $\vec{K}(\vec{r}) = K_B (\frac{s^{\prime}}{b})\hat{\phi}$
+\hl{I}
+$B = \frac{\mu_0}{4\pi} 	\int_{0}^{2\pi} \int_{a}^{b}  \frac{K_b(\frac{ s^{\prime}}{b})	\hat{z}} {s^{\prime 2}} ds s^{\prime} d\phi	$
+\colorbox{Orange}{Q7 cylindrical curl of magnetic vector potential}
+$\vec{B} = \nabla \times \vec{A}$
+\hl{I}
+$\vec{A} = C(\frac{s^{\prime}}{a})^{2} \hat{z}$ for $s^{\prime} < a$
+\hl{I}
+$\vec{A} = 2k_m I \ln (s^{\prime}) \hat{z}$ for $s^{\prime} > a$
+\hl{I}
+$\vec{B}_1 = -2c \frac{s^{\prime}}{a^2} \phi$ for  $s^{\prime} < a$
+\hl{I}
+$\vec{B}_2 = -2k_m I \frac{1}{s^{\prime}}$ for  $s^{\prime} > a$
+\hl{I}
+$\frac{1}{r}$ wire of charge relationship for E field generated, and $\frac{1}{r}$ wire of charge relationship for B field generated
+\hl{I}
+chose C to make sure B is in tesla's, to be continuous equations must be equal at $s=a^{\prime}$
+\hl{I}
+\colorbox{Orange}{Q8 infinite cylinder vs fixed length}
+Case I
+\hl{I}
+$\oint \vec{B} \cdot d\vec{a} = I_{enclosed} \mu_0$
+\hl{I}
+$I_{enclosed} = \int J(s^{\prime}) da$
+\hl{I} 
+If $\vec{I} = \hat{z} $ and $\vec{B} = \hat{\phi}$
+\hl{I}
+B goes to $\frac{1}{s}$
+\hl{I} 
+$\int_0^{2\pi} B \hat{\phi} \cdot s d\theta \hat{\phi} = \mu_0 \int_{0}^{2\pi} \int_{0}^{R} \frac{I_0}{\pi R^2}(\frac{s^{\prime}}{R}) ds s^{\prime} d\theta$
+\hl{I}
+$B 2\pi s = \frac{2I_0 \mu_0}{3}$ for $s>R$ and $=\frac{2I_0 \mu_0 s^3}{3 R^3}$  for $s<R$
+\hl{I}
+Case 2
+\hl{I}
+$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} \int \frac{\vec{J}(\vec{r}) \times \hat{R}}{R^2} d\tau^{\prime}  $
+\hl{l}
+If $\vec{I} = \hat{\phi}$ then $\hat{B} = \hat{z}$
+\hl{I}
+Spinning loop of charge, this is a dipole, had a $\frac{1}{r^3}$ relationship as $r \rightarrow \infty$ therefore $B \rightarrow \frac{1}{r^3}$
+\hl{I}
+\colorbox{Orange}{Q9 orbiting charge, earths magnetic field behaves like a dipole}
+$\langle s, \phi, z \rangle$
+\hl{I}
+$a = \frac{V^2}{R}$ centripetal acceleration
+\hl{I}
+$F = ma$
+\hl{I}
+$\vec{F}_g = F_g (-\hat{s}) $, $\vec{I} = I\hat{\phi}$, $\vec{a} = a (-\hat{s})$, $\vec{B} = B(\hat{z})$, $\vec{F} F\hat{s}$
+\hl{I}
+Magnetic field acts in the opposite direction to the gravitational field
+\hl{I}
+$B = \frac{k_m M}{r^3}$ m is magnetic dipole moment
+$\frac{B_0}{B(r)} = \frac{R^3}{R^3_{earth}}$
+\hl{I}
+$\frac{G_0}{G(r)} = \frac{R^2}{R^2}_{earth}$ (9.8)
+\hl{I}
+$\hat{s}$ only, get rid of vectors
+\hl{I}
+$F = m(-a) = \frac{-mv^2}{R} = F_{mag} - F_{g}$
+\hl{I}
+$F_{mag} = QvB$ and $F_g = mg$
+\hl{I}
+BIG R is Radius not Source field point vector minus source vector
+$\frac{-mv^2}{R} = qv \frac{B_0 R^3_{earth}}{R^3} - \frac{m g_0 R^2_{earth}}{R^2}$
+\hl{I}
+convert with period $T = \frac{d}{v} = \frac{2\pi R}{v} $ therefore $v = \frac{2\pi R}{T}$
+\hl{l}
+$R^3 = \frac{-q2\pi T R^3_{earth}}{m4\pi} + \frac{mg_0 T^2 R^2_{earth}}{m4\pi}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\colorbox{YellowGreen}{Final}
+\colorbox{Thistle}{Maxwells Equaition}
+\textbf{Gauss's Law} Differential $\vec{\nabla} \cdot \vec{E} = \frac{\rho}{\epsilon_0}$ and Integral $\oiint \vec{E} \cdot d\vec{a} = \frac{Q_{enclosed}}{\epsilon_0}$
+\hl{I}
+\textbf{no name} Differential $\vec{\nabla} \cdot \vec{B} = 0$ and integral $\oiint \vec{B} \cdot d\vec{a} = 0$
+\hl{I}
+\textbf{Faraday's Law} Differential $\vec{\nabla} \times \vec{E} = -\frac{\partial \vec{B}}{\partial t} $ and Integral $\oint \vec{E} \cdot d\vec{l} = \frac{-\partial\Phi_{mag}}{\partial t}$
+\hl{I}
+\textbf{Ampere's law with Maxell's correction} $\nabla \times \vec{B} = \mu_0 \vec{J} + \mu_0 \epsilon_0 \frac{\partial \vec{E}}{\partial t}$ and Integral  $\oint \vec{B} \cdot d\vec{l}= \mu_0 I_{enclosed} + \mu_0 \epsilon_0 \int \frac{\partial \vec{E}}{\partial t} \cdot d\vec{a}$
+\colorbox{Cyan}{Symbols and Units and Common Equations}
+\colorbox{Orange}{Electric field $E$} in $\SI{}{\newton \coulomb^{-1}}$ or $\SI{}{\volt \meter^{-1}}$ or $\SI{}{\volt \meter^{-1}}$ or $\SI{}{\kilogram \meter \second^{-3} \ampere^{-1}}$. \SI{3e6}{\volt \meter^{-1}} Dielectric breakdown of air, or $\SI{3e3}{\volt \mm^{-1}}$ could be in the lab. Therefor $\SI{1}{\volt \meter^{-1}}$ is small. Coulomb's Law $\vec{F}=\frac{1}{4\pi \epsilon_0}\frac{qQ}{R^2}\hat{R}$, $\vec{F}=Q\vec{E}$, for volume charge $\vec{F}=\frac{1}{4\pi \epsilon_0} \int \frac{\rho(\vec{r}^{\prime})}{R^2}\hat{R}d\tau^{\prime}$, $\vec{E} = -\nabla V$
+\hl{I}
+\colorbox{Orange}{Voltage $V$} in $\SI{}{\volt}$ or $\SI{}{\newton \meter \coulomb^{-1}}$ or $\SI{}{\watt \ampere ^{-1}}$ or $\SI{}{\joule \coulomb^{-1}}$ or $\SI{}{\kilogram \meter^2\ampere^{-1}\second^{-3}}$ 
+\hl{I}
+\colorbox{Orange}{Energy $E$} in $\SI{}{\joule}$ or $\SI{}{\kilogram \meter^2 \second^{-2}}$
+\hl{I}
+\colorbox{Orange}{Force $F$} in $\SI{}{\newton}$ or $\SI{}{\kilogram \meter \second^{-2}}$
+\hl{I}
+\colorbox{Orange}{Electric Charge $Q$} in $\SI{}{\coulomb}$ or $\SI{}{\ampere \second}$
+\hl{I}
+\colorbox{Orange}{Gravitational field $g$} in $\SI{}{\newton \kilogram^{-1}}$ or $\SI{}{\meter \second^{-2}}$. $\SI{1.0}{\newton \kilogram^{-1}}$ is small, about 1/10 as big as g on earths surface, $Weight = mg$
+\hl{I}
+\colorbox{Orange}{Magnetic Field $B$} in  $\SI{}{\tesla}$ or $\SI{}{\newton \ampere^{-1}\meter^{-1}}$ or $\SI{}{\kilogram \ampere^{-1} \second^{-2}}$. $\SI{5e-3}{\tesla}$ is the strength of a typical refrigerator magnet. $\SI{1}{\tesla}$ is therefor large. Magnetic Forces $\vec{F}_{mag} = Q(\vec{v} \times \vec{B})$ Lorentz Force Law $\vec{F}=Q[\vec{E}+(\vec{v} \times \vec{B})]$ Biot-Savart law $B(\vec{r}) = \frac{\mu_0}{4\pi} \int \frac{\vec{I} \times \hat{R}}{R^2} dl^{\prime} = \frac{\mu_0}{4\pi} I \int \frac{d\vec{l} \times \hat{R}}{R^2}$
+\hl{I}
+\colorbox{Orange}{Electric Potential $V_E$} in $\SI{}{\volt}$ or $\SI{}{\joule \coulomb^{-1}}$ or $\SI{}{\kilogram \meter^2 \ampere^{-1} \coulomb^{-3}}$. $\SI{1.5}{\volt}$ in an alkaline battery. Therefor $\SI{1.0}{\volt}$ is of average size. Poisson's equation $\nabla^2V=-\frac{\rho}{\epsilon_0}$, Laplace's equation $\nabla^2 V = 0$, Voltage for volume change density $V(\vec{r})=\frac{1}{4\pi \epsilon_0} \int \frac{\rho (\vec{r^{\prime}})}{R}d\tau^{\prime}$, $V=-\int_{0}^{\vec{r}} \vec{E} \cdot d\vec{l}$ (reference point for zero potential is at infinity) 
+\colorbox{Orange}{Magnetic Force Constant  $k_A$} in $\SI{}{\newton \meter^{-1}}$ or $\SI{}{\kilogram \second^{-2}}$, Where $K_A = \SI{1e-7}{\newton \meter^{-1}} = \frac{\mu_0}{4\pi}$ where ($\mu_0 = \SI{4\pi e-7}{\newton \ampere^{-2}}$) is the magnetic constant, or vacuum permeability.
+\hl{I}
+\colorbox{Orange}{Current $I$} in $\SI{}{\coulomb \second^{-1}}$ or $\SI{}{\ampere}$.  $\SI{2.0e-1}{\ampere}$ A constant current in a common light emitting diode. $\SI{1}{\ampere}$ is on larger side but still reasonable. $\vec{F}_{mag}=\int I (d\vec{l}\times \vec{B}) = \int (\vec{I} \times \vec{B})dl$, $\vec{I} = \lambda \vec{v}$, Surface current density $\vec{K} \equiv \frac{d\vec{I}}{dl}$ where $\vec{K} = \sigma \vec{v}$. $\vec{F}_{mag} = \int (\vec{v} \times \vec{B})\sigma da = \int (\vec{K}\times \vec{B})da$, volume current density $\vec{J} \equiv \frac{d\vec{I}}{da}$ where $\vec{J} = \rho \vec{v}$ $\vec{F}_{mag} = \int (\vec{v} \times \vec{B})\rho da = \int (\vec{J}\times \vec{B})d\tau$. $I = \int \vec{J} da$. $V=IR$. $P=VI=I^2R$
+\hl{I}
+\colorbox{Orange}{Magnetic Flux $\Phi$} in $\SI{}{\weber}$ (webber) or $\SI{}{\volt \second}$ or $\SI{}{\joule \ampere^{-1}}$ or $\SI{}{\joule \ampere^{-1}}$ or $\SI{}{\tesla \meter^{-2}}$ or $\SI{}{\kilogram \meter^2 \second^{-2} \ampere}$ Bar magnet \SI{1e-4}{\tesla} and coil with radius \SI{1e-2}{\meter} therefor $\Phi = \num{1e-2}^2 \pi (\SI{1e-4}{\tesla}) = \SI{3.14e-8}{\weber}$. Therefor $\SI{1}{\weber}$ is larger. for motional emf (electromotive force)$\varepsilon \equiv \oint \vec{f} \cdot d\vec{l} $. megnetic flux through a loop changes $\varepsilon = -\frac{d\Phi}{dt}$. Also Faradays law in integral form
+\hl{I}
+\colorbox{Orange}{Resistance R} in $\SI{}{\ohm}$ or $\SI{}{\volt \ampere^{-1}}$ or $\SI{}{\siemens^{-1}}$ (Siemens unit of conductivity) or or $\SI{}{\kilogram \meter^2 \second^{-3} \ampere^{-2}}$. Small light bulbs or $\SI{50}{\ohm}$ or resistance of small copper wire $\SI{1e-1}{\ohm}$. Therefore or $\SI{1}{\ohm}$ is on the small size but about average. $V=IR$ and $P=VI=I^2 R$. resistivity $\rho = \frac{1}{\sigma}$ where $\sigma$ is conductivity. Resistivity or copper $rho = \SI{1.68e-8}{\ohm \meter}$. Current density $\vec{J}=\sigma \vec{f}$ where $\vec{f}$ is the force per unit charge. $\vec{J}=\sigma(\vec{E} + \vec{v} \times \vec{B})=\sigma \vec{E}$ 
+\hl{I}
+\colorbox{Orange}{Power P} in $\SI{}{\watt}$ or $\SI{}{\kilogram \meter^2 \second^{-3}}$
+\hl{I}
+\colorbox{Orange}{Torque N} in $\SI{}{\newton}$ or $\SI{}{\kilogram \meter \second^{-2}}$. With $\SI{1}{\ampere}$ and area of $\SI{1}{\meter^2}$ creates a magnetic dipole moment m of $\SI{1}{\ampere \meter^2}$ crossed with $\SI{1}{\tesla}$ results with $\SI{1}{\ampere \meter^2  \kilogram \ampere^{-1} \second^{-2}}$ or $\SI{1}{\joule}$. $\vec{N} = \vec{m} \times \vec{B}$ and magnetic dipole moment $m=Iab$
+\hl{I}
+\colorbox{Orange}{electric dipole moment $\vec{p}$} in $\SI{}{\coulomb \meter}$ or $\SI{}{\ampere \second \meter}$. Two ping pong balls of $q=\SI{1e-8}{\coulomb}$ separated by a distance of $\SI{1e-2}{\meter}$ which results in a electric dipole moment of $\SI{1e-10}{\ampere \second \meter}$. Therefore $\SI{1}{\ampere \second \meter}$ is large. $\vec{rho} \equiv \vec{r}^{\prime} \rho(\vec{r}^{\prime}) d\tau^{\prime}$. The dipole contribution to the potential $V_{dipole}(\vec{r}) = \frac{1}{4\pi \epsilon_0}\frac{\vec{p} \cdot \hat{r}}{r^2}$. For a physical dipole $\vec{p} = qr_+^{\prime} - q\vec{r}_-^{\prime} = q(\vec{r}_+^and {\prime} - \vec{r}_-^{\prime}) q\vec{d}$. $\vec{p} = \sum_{i=1}^{n}q_i \vec{r}_i^{\prime}$. $\vec{E}_{dip}(r,\theta) = \frac{p}{4\pi \epsilon_0 r^3}(2\cos \theta \hat{r} + \sin \theta \hat{\theta})$
+\hl{I}
+\colorbox{Orange}{Magnetic vector potential $\vec{A}$} in $\SI{}{\volt \second \meter^{-1}}$ or $\SI{}{\kilogram \meter^2\ampere^{-1}\second^{-3} \second \meter^{-1}}$ or $\SI{}{\kilogram \meter \ampere^{-1}\second^{-2} }$ or $\SI{}{\newton \ampere^{-1}}$. $\vec{E} = - \vec{\nabla} V$. $\vec{B} = \vec{\nabla} \times \vec{A}$. $\vec{\nabla} \cdot \vec{A} = 0$. $\nabla^2 \vec{A} = -\mu_0 \vec{J}$. $\vec{A}(\vec{r}) = \frac{\mu_0}{4\pi} \int \frac{\vec{J}(\vec{r}^{\prime})}{R}d\tau$ (modify for line and surface currents)
+\hl{I}
+\colorbox{Cyan}{levitate a square loop of wire}
+$<s,\phi,z>$
+\hl{I}
+$\vec{F}_T = -F\hat{s}$, $\vec{F}_B = F\hat{s}$, $\vec{F}_L = F\hat{z}$, $\vec{F}_R = -F\hat{z}$
+\hl{I}
+assume E = 0 in amperes law $\int_{0}^{2\pi} B \phi \cdot rd\phi = \mu_0 I$
+\hl{I}
+$\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})$
+\hl{I}
+Full form Lorentz force law $\vec{F} =  \iiint (\rho \vec{E} + \vec{J} \times \vec{B})dv$
+\hl{I}
+applied to problem $qv \times \vec{B} = F_{magnetic force}$
+\hl{I}
+$I \times B = F_{m}$
+\hl{I}
+$F_g = ma$
+\hl{I}
+$F_T = F_g + F_{mag}$
+\hl{I}
+$0 = mg(\hat{s}) + \frac{\mu_o}{2\pi (s-\frac{a}{2})}(-\hat{s}) + \frac{\mu_0 I^2}{2\pi(s+\frac{a}{2})}(\hat{s})$
+\hl{I}
+$\therefore I = \sqrt{\frac{mg}{(\frac{\mu_u}{2\pi(s-\frac{a}{2})} - \frac{\mu_0}{2\pi (s+\frac{a}{2})})}}$
+\colorbox{Cyan}{wire with current density}
+$<s,\phi,z>$
+\hl{I}
+$\vec{J}(s) = Ae^{-as^2}$
+\hl{I}
+$a = \SI{}{m^{-2}}$ and $A=\SI{}{A^{1}m^{-2}}$
+\hl{I}
+$J = \frac{dI}{da}$
+\hl{I}
+$\int_{0}^{2\pi} Ae^{-and s^2} ds s d\phi = \vec{I}\hat{z}$
+\hl{I}
+$\vec{I} = \frac{A\pi}{a}(1-e^{-aR^2})\hat{z}$
+\hl{I}
+For a light bulb 100 watt, 120V, 144 ohm, 0.8333 amps
+\hl{I}
+Amperes law (assume $E=0$)
+$\int_{0}^{2\pi} B d\phi s = \mu_0 \frac{A\pi}{a}(1-e^{-aR^2})$
+\hl{I}
+$B=\frac{\mu_0 \frac{A \pi}{a}(1-e^{-aR^2})}{2\pi s}$
+\hl{I}
+units $\frac{\frac{N}{A^2}(\frac{A}{m^2}(\frac{1}{\frac{1}{m^2}})) }{m} = \frac{kg}{s^2 } = T$
+values $B=\frac{\num{4\pi e-7} \frac{2.786 \pi}{1} (1-e^{-1(\num{1e-3})^2})} {2\pi(1)} = \SI{1.7e-12}{\tesla}$ makes sense since we are very far away with respect to the wire
+\colorbox{Cyan}{which of Maxwell's equations}
+\colorbox{Orange}{electric field for charge distribution that increases from the origin  to radius R and zero outside}
+$<s,\theta,\phi>$
+\hl{I}
+Gauss's law, Gaussian surface on the left hand side
+$\int_{0}^{2\pi} \int_{0}^{\pi}E\hat{s}\cdot rd\theta r \sin\theta = \frac{Q(r)}{\epsilon_0} = \frac{qr}{R\epsilon_0}$ for $r<R$
+\colorbox{Orange}{Magnetic field of wire current I surrounded by cylindrical shell with opposite current 4I}
+amperes law in cylindrical coordinates $\int_{0}^{2\pi} B rd\phi = \mu_0 I$ for $r < R$ 
+\hl{I}
+center $I\hat{Z}$, inside $-I\hat{z}$, outside $-3I\hat{z}$
+\colorbox{Orange}{Voltage and current generated when a gold ring is spun on a table}
+\textbf{no maxwell equation}
+$\lambda \vec{v} = \vec{I}$ and $\vec{k}=\sigma \vec{v}$ and $\vec{J}=\rho \vec{v}$
+\hl{I}
+$\omega = \frac{v}{R}$
+\hl{I}
+$\vec{v} = \omega R \hat{\phi}$
+\hl{I}
+$\vec{I} = \lambda \omega R \hat{\phi}$
+\hl{I}
+$V=\frac{1}{4\pi}\int \frac{\lambda (r^{\prime})}{R} dl$ (R in this case is curly R)
+\hl{I}
+$r = z\hat{z}$ and $r^{\prime} = R\hat{s}$ (R radius, not curly R), $\vec{R} = z\hat{z}-R\hat{s}$ (first curly R, second Radius R)
+\hl{I}
+$V=\frac{1}{4\pi} \int_{0}^{2\pi} \frac{\lambda}{\sqrt{z+R^2}}rd\phi$
+\colorbox{Orange}{Voltage of a point charge Q centered with in a metal sphere with charge -3Q}
+$<s,\phi,\theta>$ use Gauss law to get E then solve for potential
+\hl{I}
+$\oiint \vec{E} \cdot d\vec{a} = \frac{Q_{enclosed}}{\epsilon_0}$
+\hl{I}
+$\int_0^{2\pi}\int_0^4 E r d\theta r\sin\theta d\phi$ where $E_{out} = \frac{-2Q}{4\pi r^2 \epsilon_0}$ and $E_{in} = \frac{Q}{4\pi r^2 \epsilon_0}$
+\hl{I}
+solve for potential coming in from infinity $V(\vec{r}) = -\int_{\infty}^{R}\vec{E}_{out}\cdot dl -\int_{R}^{r}\vec{E}_{in} \cdot dl$
+\hl{I}
+$V_{out} = \int_{\infty}^{R} \frac{-2Q}{4\pi r^2 \epsilon_0} dr$
+\hl{I}
+$V_{in} = -\int_{R}^{r}=\frac{Q}{4\pi r^2 \epsilon_0}$
+\hl{I}
+$\therefore V_{inside}=\frac{Q}{4 \pi \epsilon_0}(\frac{R-3r}{rR})$ where $r<R$ and $V_{outside}(r)=\frac{-2Q}{4\pi \epsilon_0 r}$ for $r>R$ (no R is curly)
+\colorbox{Orange}{Electric field of a point charge a distance D from an infinite metal sheet}
+\textbf{no maxwell equation} $<s,\theta,\phi>$
+$\vec{E} = \frac{1}{4\pi \epsilon_0}\frac{q}{R^2}\hat{R}$ (R is curly) and $\vec{E}=0$ where $s < 0$
+\hl{I}
+$r = s\hat{s}+\theta \hat{\theta} + \phi \hat{\phi}$
+\hl{I}
+$r^{\prime} = (R+d)\hat{s}$
+\hl{I}
+$\vec{R} = (s-R-d)\hat{s}+\theta\hat{\theta} +\phi \hat{\phi}$
+\colorbox{Orange}{Electric field of a point charge located a distance D from an infinite metal sheet}
+\textbf{no maxwell equation} $V(x,y,z)=\frac{1}{4\pi \epsilon_0}[\frac{q}{\sqrt{x^2 + y^2 + (z-d)^2}} - \frac{q}{\sqrt{x^2 + y^2 + (z+d)^2}} ]$ (-d for +Q and +d for -Q)
+\hl{I}
+when v=0 and z=0
+\hl{I}
+$\vec{E} = -\nabla V = -(\frac{dV}{dx} + \frac{dV}{dy} + \frac{dV}{dz})$ )however only true for $z \geq 0$ but that is all we care about for classic image problem
+\colorbox{Orange}{Electric field of three parallel sheets of charge, each with charge density $\sigma_0$}
+\textbf{Gauss law (pillbox)}<x,y,z>
+$\oiint \vec{E} \cdot d\vec{a} = \frac{Q_{enc}}{\epsilon_0}$
+\hl{I}
+$\int_{0}^{L}\int_{0}^{L}Edxdy + \int_{0}^{L}\int_{0}^{L}Edxdy = int_{0}^{L}\int_{0}^{L}\sigma dxdy$
+\hl{I}
+$2EL^2 = \frac{\sigma x y}{\epsilon_0}$
+\hl{I}
+$E=\frac{\sigma}{2\epsilon_0}$ sheet of charge for infinite sheet of charge
+\hl{I}
+\colorbox{YellowGreen}{do we multiply by 3}
+\colorbox{Orange}{potential of line of charge with density $\lambda$, surrounded by a cylindrical shell with density $-4\lambda$}
+\textbf{gauss law}
+$<s,\phi,z>$
+\hl{I}
+$\int_{0}^L \int_0^{2\pi} E s d\phi dz = \frac{\int_{0}^{L} \lambda dz}{\epsilon_0}$
+\hl{I}
+$E=\frac{\lambda}{2\pi s \epsilon_0}$
+\hl{I}
+then solve for potential working from the outside in
+\hl{I}
+remembering that $E=\frac{-\lambda}{2\pi s \epsilon_0}$ for R>s
+\hl{I}
+$V=-\int_{\infty}^{R}\vec{E}\cdot d\vec{l} -\int_{R}^{r}\vec{E}\cdot d\vec{l}$
+
+\colorbox{Cyan}{long solid metal cylinder along the equator}
+$<r,\theta,\phi>$
+\hl{I}
+Lorentz force law $\vec{F} =Q[\vec{E}+(\vec{v} \times \vec{B})]$
+$\vec{F}_g= -F \hat{s}$
+\hl{I}
+$\vec{F}_{mag}=F\hat{s}$
+\colorbox{Orange}{forces and directions}
+$J(r)=J_0(1-\frac{s}{R})+J_R(\frac{s}{R})$ where $s\leq R$
+\colorbox{Orange}{current density}
+$\int_{0}^{2\pi} \int_{0}^{R} \vec{J} ds s d\theta = \iint \frac{dI}{da}da$
+\hl{I}
+$R^2 \pi (\frac{J_0}{3}+\frac{2 J_r}{3}) = I_{enclosed}$
+\colorbox{Orange}{total current flowing and 3 way check}
+assume $E=0$ and $B_{earth} = \SI{5e-5}{\tesla}$
+\colorbox{Orange}{acceleration of particle after released}
+$F_t = F_g + F_{mag earth} + F_{magpipe}$
+\hl{I}
+$ma = -mg + qvB_e + qv\frac{mu_0 I_{enc}}{2\pi(R+D)}$
+(no B for pipe) 
+\colorbox{Orange}{parameters so different forces dominate}
+$q -> \infty$ and $a->\infty $
+
+\colorbox{Cyan}{charge distributions}
+i)
+plane, line, dipole, proton for E field, $C$,$\frac{1}{r}$, $\frac{1}{r^3}$, $\frac{1}{r^2}$ and for potential V $r$, $ln(r)$,$\frac{1}{r^2}$,$\frac{1}{r}$
+ii)
+force a distance $\vec{F}=q(\vec{E} \cdot \vec{v} \times \vec{B})$
+\hl{I}
+so$F=qE$ therefor for plane, line, dipole, and proton $qC$,$\frac{q}{r}$, $\frac{q}{r^3}$,$\frac{q}{r^2}$
+
+\colorbox{Cyan}{A through M placed on a line}
+$E=\frac{1}{r^2}$
+\hl{I}
+$E=\frac{1}{4\pi \epsilon_0} \int \frac{\rho(\vec{r}^{\prime})}{R^2}\hat{R}d\tau^{\prime}$
+\hl{I}
+e field x->-
+\hl{I}
+$\vec{E}_p = k4q (\frac{1}{1^2})\hat{x} + \frac{1}{2^2}\hat{y}$
+\hl{I}
+$\vec{E}_e = k(-q) (\frac{1}{1^6})\hat{-x} + \frac{1}{2^2}\hat{y}$
+\hl{l}
+$\therefore E_* = kq[(\frac{-143}{36})\hat{x} + \frac{5}{4}\hat{y}] $
+\hl{I}
+same process for potential only with $\frac{1}{r}$
+\colorbox{Cyan}{expression for plane wave electric field}
+$\widetilde{\hat{E}}(\vec{r},t)=\widetilde{E}_{0}e^{i(\vec{k}\cdot \vec{r} - \omega t} \hat{n}$
+\hl{I}
+polarization is in direction of amplitude of electric field
+\hl{I}
+$<x,y,z>$
+\hl{I}
+wave number vector is in direction of propagation
+\hl{I}
+$\vec{k}= k \hat{x}$ and angular frequency $\omega= 2 \pi f$ and  $k = \frac{2\pi f}{c}$and $ c=f\lambda$
+\hl{I}
+If you only look at the real term $E(r,t)= E_0 \cos (\vec{k} \cdot \vec{r} - \omega t) \hat{n}$
+\hl{I}
+$\vec{E}(\vec{r},t)=100 \cos [\frac{2\pi (\num{1.02e8})}{c}\hat{x}\cdot \vec{r}-(s\pi(\num{1.02e8})t)]\hat{z} $
+\hl{I}
+$\hat{x}$ propagation direction $\hat{z}$ polarization direction
+\hl{I}
+$\widetilde{\hat{B}}(\vec{r},t)=\frac{1}{c}\widetilde{E}_0 e^{i(\vec{k}\cdot \vec{r} - \omega t)}(\hat{\vec{k}}\times \hat{\vec{n}}) = \frac{1}{c}\hat{\vec{k}} \times \widetilde{\vec{E}}$
+\hl{I}
+$B=\frac{1}{c}\hat{x}\times E\hat{z} = -\frac{1}{c}E\hat{Y}$
+\hl{I}
+Power is J/s or watt
+\hl{I}
+The energy flux density (energy per unit area, per unit time) is the Poynting vector $\vec{S} = \frac{1}{\mu_0}(\vec{E} \times \vec{B})$
+\hl{I}
+multiply the pointing vector by area to get the powering since pointing vector is  (energy per unit area, per unit time)
+\hl{I}
+Solve maxwells equation using E and B
+
+
+\colorbox{Cyan}{Sphere with Uniform Density, Poisson compared to Gauss}
+
+\colorbox{Cyan}{distance behavior of point charge and conducting metal sheet}
+
+\colorbox{Cyan}{separation of variables}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\end{multicols}
+\end{document}  
